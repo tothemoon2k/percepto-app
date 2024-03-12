@@ -1,10 +1,15 @@
 <script>
+    // @ts-nocheck
     import Navbar from '$lib/components/general/Navbar.svelte';
     import Screen1 from '$lib/components/screens/Screen1.svelte';
     import Screen2 from '$lib/components/screens/Screen2.svelte';
     import Screen3 from '$lib/components/screens/Screen3.svelte';
 
-    let screen = 3;
+    let screen = 1;
+
+    const handleIdeaInput = (event) =>{
+        console.log(event.detail);
+    }
 
     const handleNext = () =>{
         screen++;
@@ -19,7 +24,7 @@
     <Navbar />
 
     {#if screen === 1}
-        <Screen1 on:next={handleNext}/>
+        <Screen1 on:ideaInput={handleIdeaInput} on:next={handleNext}/>
     {/if}
 
     {#if screen === 2}
