@@ -29,18 +29,3 @@
         <NextBtn text="Next" on:click={handleNextClick}/>
     </div>
 </div>
-
-<style>
-     @media (max-width: 768px) {
-        .fill-height{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-    }
-    @media (min-width: 768px) {
-        .fill-height{
-            height: 100%;
-        }
-    }
-</style>

@@ -1,7 +1,8 @@
 <script>
     import ChecklistCard from "$lib/components/general/ChecklistCard.svelte";
-    import AlexHormozi from "$lib/assets/AlexHormozi.webp";
     import NextBtn from "$lib/components/general/NextBtn.svelte";
+
+    import AlexHormozi from "$lib/assets/AlexHormozi.webp";
 </script>
 
 <div class="flex flex-col justify-center items-center w-full fill-height absolute">
@@ -28,22 +29,4 @@
         <button class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
         <NextBtn text="Evaluate"/>
     </div>
-
-    
-    
 </div>
-
-<style>
-    @media (max-width: 768px) {
-        .fill-height{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-    }
-    @media (min-width: 768px) {
-        .fill-height{
-            height: 100%;
-        }
-    }
-</style>

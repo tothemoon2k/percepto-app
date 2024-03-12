@@ -1,4 +1,3 @@
-
 <div class="flex flex-col justify-center items-center w-full fill-height absolute">
     <div class="mt-10 md:mt-20 lg:mt-14 mb-9 w-5/6">
         <div class="mb-3 flex items-center gap-6">
