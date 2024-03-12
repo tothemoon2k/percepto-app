@@ -1,7 +1,8 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import NextBtn from "$lib/components/general/NextBtn.svelte";
+
     const dispatch = createEventDispatcher();
-    import NextBtn from "../NextBtn.svelte";
 
     const handleNextClick = () => {
         console.log('clicked')
@@ -9,13 +10,13 @@
     }
 </script>
 
-<div class="flex w-full h-full fill-height absolute">
+<div class="flex w-full fill-height absolute">
     <div class="hidden md:flex px-6 justify-center items-center w-full md:w-1/2 h-full">
         <img class="rounded-2xl aspect-square object-cover w-5/6" src="https://media.licdn.com/dms/image/C4E12AQEbVXou0BNGCA/article-cover_image-shrink_720_1280/0/1575880078189?e=2147483647&v=beta&t=nMyqG4r9JfHemvVg97Im-9sYt56nflHAoiDP2q_O6fo" alt="Paul Graham">
     </div>
 
-    <div class="pr-16 flex flex-col justify-center w-full px-8 md:px-0 md:w-1/2 h-full">
-        <h1 class="text-3xl md:text-5xl font-bold">
+    <div class="mt-12 mb-9 md:mb-0 md:mt-0 md:pr-16 flex flex-col justify-center w-full px-8 md:px-0 md:w-1/2 h-full">
+        <h1 class="text-4xl md:text-5xl font-bold">
             Objectively Evaluate Your Business Idea in Under 30 Seconds ⏱️
         </h1>
         <p class="mt-1 text-lg md:text-xl text-gray-500">
@@ -30,11 +31,16 @@
 </div>
 
 <style>
-    @media (max-width: 640px) {
+     @media (max-width: 768px) {
         .fill-height{
             flex: 1;
             display: flex;
             justify-content: center;
+        }
+    }
+    @media (min-width: 768px) {
+        .fill-height{
+            height: 100%;
         }
     }
 </style>

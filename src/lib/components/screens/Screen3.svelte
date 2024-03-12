@@ -1,18 +1,14 @@
-<script>
 
-</script>
-
-
-<div class="flex flex-col justify-center items-center w-full h-full absolute">
-    <div class="mt-14 mb-9 w-5/6">
+<div class="flex flex-col justify-center items-center w-full fill-height absolute">
+    <div class="mt-10 md:mt-20 lg:mt-14 mb-9 w-5/6">
         <div class="mb-3 flex items-center gap-6">
-            <h1 class="text-5xl font-bold">
+            <h1 class="text-4xl md:text-5xl font-bold">
                 Results
             </h1>
-            <img class="h-16" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="Precentage Img">
+            <img class="h-14 md:h-16" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="Precentage Img">
         </div>
 
-        <p class="text-xl text-gray-500">
+        <p class="text-lg md:text-xl text-gray-500">
             A website that allows astronauts to buy affordable rocket boots from Russia via two-day shipping
         </p>
     </div>
@@ -27,9 +23,9 @@
 
         <div class="relative shadow-sm w-full px-6 rounded-xl bg-white cursor-pointer transition-all">
             <div class="flex items-center gap-5 py-4">
-                <img class="h-12" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="">
-                <h3 class="text-xl font-medium hover:scale-105">Holden Gerlach Checklist</h3>
-                <h3 class="text-xl text-green-500 font-medium hover:scale-105">Pass</h3>
+                <img class="h-10 md:h-12" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="">
+                <h3 class="leading-6 md:text-xl font-medium">Holden Gerlach Checklist</h3>
+                <h3 class="md:text-xl text-green-500 font-medium">Pass</h3>
             </div>
             
             <hr class="h-px bg-gray-200 border-0">
@@ -71,3 +67,18 @@
     </div>
     
 </div>
+
+<style>
+    @media (max-width: 768px) {
+        .fill-height{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    @media (min-width: 769px) {
+        .fill-height{
+            height: 100%;
+        }
+    }
+</style>
