@@ -4,7 +4,7 @@
     import NextBtn from "$lib/components/general/NextBtn.svelte";
 
     const dispatch = createEventDispatcher();
-    let idea;
+    export let idea;
 
     const handleIdeaInput = (event) => {
         idea = event.target.value;
@@ -30,7 +30,7 @@
             Objectively evaluate your business idea based on winning checklists
         </p>
 
-        <textarea on:input={handleIdeaInput} class="mt-6 border-2 rounded-2xl pt-3.5 px-5 pb-36 text-wrap" placeholder="A website that allows astronauts to buy affordable rocket boots from Russia via two-day shipping" name="idea" id="idea"></textarea>
+        <textarea bind:value={idea} on:input={handleIdeaInput} class="mt-6 border-2 rounded-2xl pt-3.5 px-5 pb-36 text-wrap" placeholder="A website that allows astronauts to buy affordable rocket boots from Russia via two-day shipping" name="idea" id="idea"></textarea>
         <p class="ml-1 mt-2.5 mb-6 text-sm text-gray-500">Absolutely free. No sign up or credit card required.</p>
 
         <NextBtn text="Next" on:click={handleNextClick}/>

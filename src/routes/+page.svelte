@@ -3,19 +3,32 @@
     import Navbar from '$lib/components/general/Navbar.svelte';
     import Screen1 from '$lib/components/screens/Screen1.svelte';
     import Screen2 from '$lib/components/screens/Screen2.svelte';
+    import Loading from '$lib/components/screens/Loading.svelte';
     import Screen3 from '$lib/components/screens/Screen3.svelte';
 
-    let screen = 1;
+    let screen = 2;
+    let idea = "";
 
     const handleIdeaInput = (event) =>{
-        console.log(event.detail);
+        idea = event.detail;
+    }
+
+    const handleSelectedChecklists = (event) =>{
+        console.log(idea);
+        for(let obj of event.detail){
+            console.log(obj.checklist)
+        }
     }
 
     const handleNext = () =>{
         screen++;
     }
 
-    const handleBack = () =>{
+    const handleEvaluate = () =>{
+        screen = "loading";
+    }
+
+    const handleBack = () => {
         screen--;
     }
 </script>
@@ -24,11 +37,15 @@
     <Navbar />
 
     {#if screen === 1}
-        <Screen1 on:ideaInput={handleIdeaInput} on:next={handleNext}/>
+        <Screen1 {idea} on:ideaInput={handleIdeaInput}  on:next={handleNext}/>
     {/if}
 
     {#if screen === 2}
-        <Screen2 />
+        <Screen2 on:selectedChecklists={handleSelectedChecklists} on:back={handleBack} on:eval={handleEvaluate}/>
+    {/if}
+
+    {#if screen === "loading"}
+        <Loading />
     {/if}
 
     {#if screen === 3}
@@ -40,9 +57,5 @@
 <style> 
     *{
         font-family: neue-plak;
-    }
-
-    .h-screen{
-        background: #f5f2f9;
     }
 </style>
