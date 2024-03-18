@@ -35,7 +35,7 @@
             businessIdea: idea, 
             checklists: selectedChecklists
         }));
-        axios.post("http://localhost:3000/evaluate", {
+        axios.post("https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
             checklists: selectedChecklists
         })
