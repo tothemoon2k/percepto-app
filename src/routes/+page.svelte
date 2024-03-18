@@ -7,7 +7,7 @@
     import Loading from '$lib/components/screens/Loading.svelte';
     import Screen3 from '$lib/components/screens/Screen3.svelte';
 
-    let screen = 2;
+    let screen = 1;
 
     let idea = "A pet photo sharing website";
     let selectedChecklists = [];
