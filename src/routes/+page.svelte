@@ -9,7 +9,7 @@
 
     let screen = 1;
 
-    let idea = "A pet photo sharing website";
+    let idea = "";
     let selectedChecklists = [];
     let checklistNames = []
     let results = [];
