@@ -1,11 +1,11 @@
 <script>
     // @ts-nocheck
     import axios from 'axios';
-    import Navbar from '$lib/components/General/Navbar.svelte';
-    import Screen1 from '$lib/components/Screens/Screen1.svelte';
-    import Screen2 from '$lib/components/Screens/Screen2.svelte';
-    import Loading from '$lib/components/Screens/Loading.svelte';
-    import Screen3 from '$lib/components/Screens/Screen3.svelte';
+    import Navbar from '$lib/components/general/Navbar.svelte';
+    import Screen1 from '$lib/components/screens/Screen1.svelte';
+    import Screen2 from '$lib/components/screens/Screen2.svelte';
+    import Loading from '$lib/components/screens/Loading.svelte';
+    import Screen3 from '$lib/components/screens/Screen3.svelte';
 
     let screen = 2;
 
