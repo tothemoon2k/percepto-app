@@ -7,8 +7,6 @@
 
     import ChecklistResults from "$lib/components/General/ChecklistResults.svelte";
     import Percentage from "$lib/components/General/Percentage.svelte";
-
-    console.log(results.checklists[1])
 </script>
 
 <div class="flex flex-col justify-center items-center w-full fill-height absolute">
