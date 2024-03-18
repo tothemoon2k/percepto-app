@@ -1,15 +1,36 @@
 <script>
     //@ts-nocheck
     export let name = "Testinski";
-    export let overallPass = true;
+    export let items = [];
     
+    let overallPass;
+
     export let extended = false;
+
 
     const toggleExtended = () => {
         extended = !extended;
     }
 
-    export let items = [];
+    function checklistPassed() {
+        let totalWeight = 0;
+        let passedWeight = 0;
+
+        for (const item of items) {
+            const { passing, passing_percentage } = item;
+            const weight = passing_percentage / 100;
+            totalWeight += weight;
+
+            if (passing) {
+            passedWeight += weight;
+            }
+        }
+
+        const overallPassingPercentage = (passedWeight / totalWeight) * 100;
+        const overallPassed = overallPassingPercentage >= 50;
+
+        overallPass = overallPassed;
+    }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

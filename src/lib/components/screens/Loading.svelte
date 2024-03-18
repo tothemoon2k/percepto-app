@@ -1,5 +1,5 @@
 <script>
-    let timeRemaining = 90; // Set the initial time to 90 seconds
+    let timeRemaining = 50; // Set the initial time to 90 seconds
 
     const countdownTimer = setInterval(() => {
         timeRemaining--;
