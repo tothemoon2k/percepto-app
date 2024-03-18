@@ -135,10 +135,10 @@
     {#if showingModal}
         <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 absolute z-10 w-screen h-screen">
             <div class="flex flex-col bg-white w-2/5 rounded-2xl shadow-sm">
-                <div class="flex items-center gap-4 py-4 px-10">
+                <div class="flex items-center gap-4 py-4 px-10 w-full">
                     <img class="h-12 rounded-full" src={newChecklist.img} alt="">
-                    <h2 class="text-2xl font-medium">
-                        <input bind:value={newChecklist.name} type="text">
+                    <h2 class="text-2xl font-medium w-full">
+                        <input class="w-full px-2" bind:value={newChecklist.name} type="text">
                     </h2>
                 </div>
 
@@ -148,7 +148,7 @@
                     <ul class="flex flex-col gap-4 text-lg">
                         {#each newChecklist.checklist as item, index}
                             <li class="flex items-center gap-1.5"><img class="w-4 h-4 -mt-0.5" src="https://img.icons8.com/material/24/unchecked-checkbox--v2.png" alt="Blank Checkbox">
-                                <input bind:value={item} type="text" name="test" id="test">
+                                <input class="w-full px-2" bind:value={item} type="text" name="test" id="test">
                             </li>
                         {/each}
                         <button on:click={handleAddNewChecklistItem} class="text-start font-medium underline cursor-pointer">Add Item</button>
@@ -166,10 +166,10 @@
     {#if showingEditModal}
         <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 absolute z-10 w-screen h-screen">
             <div class="flex flex-col bg-white w-2/5 rounded-2xl shadow-sm">
-                <div class="flex items-center gap-4 py-4 w-full">
-                    <img class="h-12 rounded-full" src={checklists[currentlyEditing].img} alt="">
+                <div class="flex items-center gap-2.5 py-4 px-6 w-full">
+                    <img class="h-12 w-12 object-cover rounded-full" src={checklists[currentlyEditing].img} alt="">
                     <h2 class="text-2xl font-medium w-full">
-                        <input class="test w-full" bind:value={checklists[currentlyEditing].name} type="text">
+                        <input class="w-full px-2" bind:value={checklists[currentlyEditing].name} type="text">
                     </h2>
                 </div>
 
@@ -179,7 +179,7 @@
                     <ul class="flex flex-col gap-4 text-lg">
                         {#each checklists[currentlyEditing].checklist as item, index}
                             <li class="flex items-center gap-1.5"><img class="w-4 h-4 -mt-0.5" src="https://img.icons8.com/material/24/unchecked-checkbox--v2.png" alt="Blank Checkbox">
-                                <input class="w-fit px-1" bind:value={item} type="text" name="test" id="test">
+                                <input class="w-full px-2" bind:value={item} type="text" name="test" id="test">
                             </li>
                         {/each}
                         <button on:click={handleAddNewChecklistItemEdit} class="text-start font-medium underline cursor-pointer">Add Item</button>
@@ -230,10 +230,5 @@
         .fill-height{
             height: 100%;
         }
-    }
-
-    .test{
-        padding-left: 20px;
-        padding-right: 20px;
     }
 </style>
