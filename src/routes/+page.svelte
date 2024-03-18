@@ -35,7 +35,7 @@
             businessIdea: idea, 
             checklists: selectedChecklists
         }));
-        axios.post(import.meta.env.VITE_POST_URL || process.env.POST_URL, {
+        axios.post(import.meta.env.VITE_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
             checklists: selectedChecklists
         })
