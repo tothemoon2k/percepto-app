@@ -1,8 +1,8 @@
 <script>
     // @ts-nocheck
     import { createEventDispatcher } from 'svelte';
-    import ChecklistCard from "$lib/components/General/ChecklistCard.svelte";
-    import NextBtn from "$lib/components/General/NextBtn.svelte";
+    import ChecklistCard from "$lib/components/general/ChecklistCard.svelte";
+    import NextBtn from "$lib/components/general/NextBtn.svelte";
 
     import AlexHormozi from "$lib/assets/AlexHormozi.webp";
     let PaulGraham = "https://techcrunch.com/wp-content/uploads/2011/06/paulgraham.png";

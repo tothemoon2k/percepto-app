@@ -5,8 +5,8 @@
     export let checklistNames;
     export let results;
 
-    import ChecklistResults from "$lib/components/General/ChecklistResults.svelte";
-    import Percentage from "$lib/components/General/Percentage.svelte";
+    import ChecklistResults from "$lib/components/general/ChecklistResults.svelte";
+    import Percentage from "$lib/components/general/Percentage.svelte";
 </script>
 
 <div class="flex flex-col justify-center items-center w-full fill-height absolute">

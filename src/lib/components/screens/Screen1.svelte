@@ -1,7 +1,7 @@
 <script>
     // @ts-nocheck
     import { createEventDispatcher } from 'svelte';
-    import NextBtn from "$lib/components/General/NextBtn.svelte";
+    import NextBtn from "$lib/components/general/NextBtn.svelte";
 
     const dispatch = createEventDispatcher();
     export let idea;
