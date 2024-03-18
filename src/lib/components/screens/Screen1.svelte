@@ -1,7 +1,7 @@
 <script>
     // @ts-nocheck
     import { createEventDispatcher } from 'svelte';
-    import NextBtn from "$lib/components/general/NextBtn.svelte";
+    import NextBtn from "$lib/components/General/NextBtn.svelte";
 
     const dispatch = createEventDispatcher();
     export let idea;
@@ -36,3 +36,18 @@
         <NextBtn text="Next" on:click={handleNextClick}/>
     </div>
 </div>
+
+<style>
+    @media (max-width: 768px) {
+        .fill-height{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    @media (min-width: 768px) {
+        .fill-height{
+            height: 100%;
+        }
+    }
+</style>

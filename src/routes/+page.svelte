@@ -1,22 +1,27 @@
 <script>
     // @ts-nocheck
-    import Navbar from '$lib/components/general/Navbar.svelte';
-    import Screen1 from '$lib/components/screens/Screen1.svelte';
-    import Screen2 from '$lib/components/screens/Screen2.svelte';
-    import Loading from '$lib/components/screens/Loading.svelte';
-    import Screen3 from '$lib/components/screens/Screen3.svelte';
+    import axios from 'axios';
+    import Navbar from '$lib/components/General/Navbar.svelte';
+    import Screen1 from '$lib/components/Screens/Screen1.svelte';
+    import Screen2 from '$lib/components/Screens/Screen2.svelte';
+    import Loading from '$lib/components/Screens/Loading.svelte';
+    import Screen3 from '$lib/components/Screens/Screen3.svelte';
 
     let screen = 2;
-    let idea = "";
+
+    let idea = "A pet photo sharing website";
+    let selectedChecklists = [];
+    let checklistNames = []
+    let results = [];
 
     const handleIdeaInput = (event) =>{
         idea = event.detail;
     }
 
     const handleSelectedChecklists = (event) =>{
-        console.log(idea);
         for(let obj of event.detail){
-            console.log(obj.checklist)
+            checklistNames.push(obj.name);
+            selectedChecklists.push(obj.checklist);
         }
     }
 
@@ -26,6 +31,22 @@
 
     const handleEvaluate = () =>{
         screen = "loading";
+        console.log(JSON.stringify({
+            businessIdea: idea, 
+            checklists: selectedChecklists
+        }));
+        axios.post("http://localhost:3000/evaluate", {
+            businessIdea: idea,
+            checklists: selectedChecklists
+        })
+        .then(res => {
+            results = res.data;
+            console.log(results, selectedChecklists)
+            screen = 3;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 
     const handleBack = () => {
@@ -36,26 +57,16 @@
 <div class="w-screen h-screen">
     <Navbar />
 
-    {#if screen === 1}
-        <Screen1 {idea} on:ideaInput={handleIdeaInput}  on:next={handleNext}/>
-    {/if}
-
-    {#if screen === 2}
-        <Screen2 on:selectedChecklists={handleSelectedChecklists} on:back={handleBack} on:eval={handleEvaluate}/>
-    {/if}
-
-    {#if screen === "loading"}
-        <Loading />
-    {/if}
-
-    {#if screen === 3}
-        <Screen3 />
-    {/if}
+    <svelte:component
+        this={screen === 1 ? Screen1 : screen === 2 ? Screen2 : screen === 3 ? Screen3 : screen === "loading" ? Loading : null}
+        {idea}
+        {selectedChecklists}
+        {checklistNames}
+        {results}
+        on:ideaInput={handleIdeaInput}
+        on:next={handleNext}
+        on:selectedChecklists={handleSelectedChecklists}
+        on:back={handleBack}
+        on:eval={handleEvaluate}
+    />
 </div>
-
-
-<style> 
-    *{
-        font-family: neue-plak;
-    }
-</style>
