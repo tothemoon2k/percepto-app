@@ -104,6 +104,11 @@
         checklists = checklists;
     }
 
+    const deleteNewChecklistItem = (index) =>{
+        newChecklist.checklist = newChecklist.checklist.filter((item, i) => i !== index);
+        newChecklist = newChecklist;
+    }
+
     const closeEdit = () => {
         showingEditModal = false;
     }
@@ -129,12 +134,20 @@
         dispatch('selectedChecklists', selectedChecklists.map((item) => checklists[item]));
         dispatch('eval');
     }
+
+    $: {
+        if (showingModal || showingEditModal) {
+            //document.body.style.overflow = 'hidden';
+        } else {
+            //document.body.style.overflow = 'auto';
+        }
+  }
 </script>
 
-<div class="flex flex-col justify-center items-center w-full fill-height absolute">
+<div class="flex flex-col justify-center items-center container-width fill-height absolute -translate-x-1/2 left-1/2">
     {#if showingModal}
-        <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 absolute z-10 w-screen h-screen">
-            <div class="flex flex-col bg-white w-2/5 rounded-2xl shadow-sm">
+        <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 z-10 w-screen h-screen">
+            <div class="flex flex-col bg-white w-[90%] md:w-3/5 lg:w-2/5 rounded-2xl shadow-sm">
                 <div class="flex items-center gap-4 py-4 px-10 w-full">
                     <img class="h-12 rounded-full" src={newChecklist.img} alt="">
                     <h2 class="text-2xl font-medium w-full">
@@ -147,8 +160,15 @@
                 <div class="flex flex-col pt-10 pb-8 px-12 gap-10">
                     <ul class="flex flex-col gap-4 text-lg">
                         {#each newChecklist.checklist as item, index}
-                            <li class="flex items-center gap-1.5"><img class="w-4 h-4 -mt-0.5" src="https://img.icons8.com/material/24/unchecked-checkbox--v2.png" alt="Blank Checkbox">
+                            <li class="flex items-center gap-1.5 relative">
+                                <img class="w-4 h-4 -mt-0.5" src="https://img.icons8.com/material/24/unchecked-checkbox--v2.png" alt="Blank Checkbox">
                                 <input class="w-full px-2" bind:value={item} type="text" name="test" id="test">
+                                <!-- svelte-ignore missing-declaration -->
+                                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                                <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+                                {#if index !== 0} 
+                                    <img on:click={() => {deleteNewChecklistItem(index)}} class="absolute right-0 z-10 h-6 opacity-60 cursor-pointer transition-all hover:opacity-100" src="https://img.icons8.com/ios-glyphs/100/delete.png" alt="Trash Can">
+                                {/if}
                             </li>
                         {/each}
                         <button on:click={handleAddNewChecklistItem} class="text-start font-medium underline cursor-pointer">Add Item</button>
@@ -164,8 +184,8 @@
     {/if}
 
     {#if showingEditModal}
-        <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 absolute z-10 w-screen h-screen">
-            <div class="flex flex-col bg-white w-2/5 rounded-2xl shadow-sm">
+        <div class="bg-gray-300 flex justify-center items-center bg-opacity-50 z-10 w-screen h-screen">
+            <div class="flex flex-col bg-white w-[90%] md:w-3/5 lg:w-2/5 rounded-2xl shadow-sm">
                 <div class="flex items-center gap-2.5 py-4 px-6 w-full">
                     <img class="h-12 w-12 object-cover rounded-full" src={checklists[currentlyEditing].img} alt="">
                     <h2 class="text-2xl font-medium w-full">
@@ -194,28 +214,30 @@
         </div>
     {/if}
 
-    <div class="px-10 md:px-12 lg:px-0 md:mt-14 lg:mt-32">
-        <h1 class="mt-10 md:mt-0 text-4xl md:text-5xl font-bold">
-            Choose your checklists/criteria 📋
-        </h1>
-    
-        <p class="mt-2 md:mt-1 text-lg md:text-xl text-gray-500">
-            Objectively evaluate your business idea based on winning checklists
-        </p>
-    </div>
+    {#if !showingModal && !showingEditModal}
+        <div class="md:mt-14 lg:mt-32">
+            <h1 class="mt-10 md:mt-0 text-4xl md:text-5xl font-bold">
+                Choose your checklists/ criteria 📋
+            </h1>
+        
+            <p class="mt-2 md:mt-1 text-lg md:text-xl text-gray-500">
+                Objectively evaluate your business idea based on winning checklists
+            </p>
+        </div>
 
-    <div class="mt-12 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {#each checklists as {name, img, checklist}, index}
-            <ChecklistCard on:click={handleChecklistClick} on:edit={handleChecklistEdit} {name} {img} {checklist} {index}/>
-        {/each}
-    </div>
+        <div class="mt-12 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-auto">
+            {#each checklists as {name, img, checklist}, index}
+                <ChecklistCard on:click={handleChecklistClick} on:edit={handleChecklistEdit} {name} {img} {checklist} {index}/>
+            {/each}
+        </div>
 
-    <button on:click={handleCreate} class="mt-6 md:ml-6 md:w-5/6 text-start font-medium underline text-lg cursor-pointer">Create a custom checklist</button>
+        <button on:click={handleCreate} class="mt-6 md:ml-6 md:w-full text-start font-medium underline text-lg cursor-pointer">Create a custom checklist</button>
 
-    <div class="mb-14 mt-10 md:mt-6 md:mr-40 md:self-end flex items-center gap-8">
-        <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
-        <NextBtn on:click={evaluate} text="Evaluate"/>
-    </div>
+        <div class="mt-10 lg:mt-0 mb-14 md:self-end flex items-center gap-8">
+            <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
+            <NextBtn on:click={evaluate} text="Evaluate"/>
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -231,4 +253,16 @@
             height: 100%;
         }
     }
+
+    .container-width{
+        width: 80%;
+    }
+
+    @media (min-width: 786px) {
+        .container-width{
+            width: 90%;
+        }
+    }
+
+    
 </style>

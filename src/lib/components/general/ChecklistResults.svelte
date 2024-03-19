@@ -1,9 +1,12 @@
 <script>
     //@ts-nocheck
+    import Percentage from "./Percentage.svelte";
     export let name = "Testinski";
     export let items = [];
+    let passPercentage;
     
     let overallPass;
+    let passingPercentage = 0;
 
     export let extended = false;
 
@@ -30,20 +33,23 @@
         const overallPassed = overallPassingPercentage >= 50;
 
         overallPass = overallPassed;
+        passPercentage = Math.floor(overallPassingPercentage);
     }
+
+    checklistPassed();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div on:click={toggleExtended} class="{extended ? "relative shadow-sm w-full px-6 rounded-xl bg-white cursor-pointer transition-all" : "relative shadow-sm w-full py-3 px-6 rounded-xl bg-white flex items-center gap-5 cursor-pointer transition-all"}">
     {#if !extended}
-        <img class="h-10 md:h-12" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="">
+        <Percentage percentage={passPercentage} /> <!--h-10 md:h-12-->
         <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
         <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
         <img class="absolute right-12 h-10 -mt-1" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
     {:else}
         <div class="flex items-center gap-5 py-4">
-            <img class="h-10 md:h-12" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="">
+            <Percentage percentage={passPercentage} /> <!--h-10 md:h-12-->
             <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
             <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
         </div>

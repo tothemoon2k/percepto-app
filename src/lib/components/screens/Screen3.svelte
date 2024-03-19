@@ -3,10 +3,26 @@
     export let idea;
     export let selectedChecklists;
     export let checklistNames;
-    export let results;
+    export let results = [];
 
     import ChecklistResults from "$lib/components/general/ChecklistResults.svelte";
     import Percentage from "$lib/components/general/Percentage.svelte";
+
+    function calculatePassedPercentage() {
+        let totalItems = results.checklists.length;
+        let passedItems = 0;
+        let totalSum = 0;
+
+        for (const checklist of results.checklists) {
+            let sum = 0;
+            for (const item of checklist.items) {
+                sum+=item.passing_percentage;
+            }
+            totalSum += sum/checklist.items.length;
+        }
+
+        return Math.floor(totalSum/totalItems);
+    }
 </script>
 
 <div class="flex flex-col justify-center items-center w-full fill-height absolute">
@@ -16,9 +32,7 @@
                 Results
             </h1>
 
-            <Percentage percentage={25} positive={true} height="16" width="16"/>
-
-            <img class="h-14 md:h-16" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="Precentage Img">
+            <Percentage percentage={calculatePassedPercentage()} height=16 width=16 />
         </div>
 
         <p class="text-lg md:text-xl text-gray-500">
@@ -32,6 +46,7 @@
             <ChecklistResults 
                 items={checklist.items}
                 name={checklistNames[i]}
+                passPercentage={checklist.passing_percentage}
             />
         {/each}
 
