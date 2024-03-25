@@ -36,11 +36,8 @@
         }
 
         screen = "loading";
-        console.log(JSON.stringify({
-            businessIdea: idea, 
-            checklists: selectedChecklists
-        }));
-        axios.post(import.meta.env.VITE_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
+        
+        axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
             checklists: selectedChecklists
         })
