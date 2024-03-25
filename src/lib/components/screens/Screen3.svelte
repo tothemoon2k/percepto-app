@@ -27,6 +27,7 @@
         .then(res => {
             console.log(res);
             emailSending = false;
+            emailSent = true;
         })
         .catch(error => {
             console.error('Error:', error);
@@ -97,7 +98,7 @@
                     </div>
                 {:else}
                     <div class="relative py-10 gap-10 flex flex-col justify-center items-center">
-                        <video class="h-80 rounded-lg" autoplay>
+                        <video preload="auto" class="h-80 rounded-lg" autoplay>
                             <source src="https://cdn.dribbble.com/users/2247428/screenshots/16321135/media/222d28f7bbdccd37951fcb0a4a042100.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
