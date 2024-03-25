@@ -41,7 +41,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div on:click={toggleExtended} class="{extended ? "relative shadow-sm w-full px-6 rounded-xl bg-white cursor-pointer transition-all" : "relative shadow-sm w-full py-3 px-6 rounded-xl bg-white flex items-center gap-5 cursor-pointer transition-all"}">
+<div on:click={toggleExtended} class="{extended ? "relative shadow-sm w-full px-6 pb-10 rounded-xl bg-white" : "relative shadow-sm w-full py-3 px-6 rounded-xl bg-white flex items-center gap-5"} cursor-pointer transition-all">
     {#if !extended}
         <Percentage percentage={passPercentage} /> <!--h-10 md:h-12-->
         <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
@@ -54,7 +54,7 @@
             <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
         </div>
         
-        <hr class="h-px bg-gray-200 border-0">
+        <hr class="h-px bg-gray-200 border-0 mb-5">
 
         {#each items as item}
             <div class="mt-4 ml-2.5">

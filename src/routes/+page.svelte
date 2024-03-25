@@ -9,7 +9,7 @@
 
     let screen = 1;
 
-    let idea = "";
+    let idea = "A website for comics to share their routines";
     let selectedChecklists = [];
     let checklistNames = []
     let results = [];
@@ -30,6 +30,11 @@
     }
 
     const handleEvaluate = () =>{
+        if(!selectedChecklists.length){
+            alert("Please select at least one checklist");
+            return;
+        }
+
         screen = "loading";
         console.log(JSON.stringify({
             businessIdea: idea, 

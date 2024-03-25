@@ -225,7 +225,7 @@
             </p>
         </div>
 
-        <div class="mt-12 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-auto">
+        <div class="mt-12 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-auto py-2 px-2">
             {#each checklists as {name, img, checklist}, index}
                 <ChecklistCard on:click={handleChecklistClick} on:edit={handleChecklistEdit} {name} {img} {checklist} {index}/>
             {/each}
@@ -233,7 +233,7 @@
 
         <button on:click={handleCreate} class="mt-6 md:ml-6 md:w-full text-start font-medium underline text-lg cursor-pointer">Create a custom checklist</button>
 
-        <div class="mt-10 lg:mt-0 mb-14 md:self-end flex items-center gap-8">
+        <div class="mt-20 md:mt-10 lg:mt-0 mb-14 md:self-end flex items-center gap-8">
             <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
             <NextBtn on:click={evaluate} text="Evaluate"/>
         </div>
