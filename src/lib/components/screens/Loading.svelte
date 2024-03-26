@@ -9,7 +9,7 @@
     }, 1000);
 </script>
 
-<div class="flex flex-col justify-center items-center w-full h-full absolute">
+<div class="flex flex-col justify-center items-center w-full h-5/6 lg:h-full absolute">
     <h1 class="text-3xl font-bold mt-5">Loading...</h1>
-    <p class="text-lg mt-2">Evaluating your idea. Est: {timeRemaining} seconds remaining</p>
+    <p class="text-lg mt-2 text-center px-6">Evaluating your idea. Est: {timeRemaining} seconds remaining</p>
 </div>

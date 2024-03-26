@@ -9,19 +9,22 @@
     import ChecklistResults from "$lib/components/general/ChecklistResults.svelte";
     import Percentage from "$lib/components/general/Percentage.svelte";
 
-    let showingModal = false;
+    let showingModal = true;
     let emailSending = false;
+    let emailName = "";
     let email = "";
-    let emailSent = false;
+    let emailSent = true;
 
     const toggleModal = () => {
         showingModal = !showingModal;
+        emailSent = false;
     }
 
     const sendEmail = () => {
         emailSending = true;
         axios.post(import.meta.env.VITE_MAIL_POST_URL || "https://businessideaevaluator.onrender.com/sendmail", {
             email: email,
+            name: emailName,
             results: results
         })
         .then(res => {
@@ -69,13 +72,13 @@
                         <div class="flex flex-col gap-8">
                             <div>
                                 <label for="name">Name</label>
-                                <input type="name" id="name" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                <input bind:value={emailName} type="text" id="name" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Holdezy Gerlachimo">
                             </div>
 
                             <div>
                                 <label for="email">Enter Your Email</label>
                                 <p class="text-sm text-gray-500 mt-0.5 mb-3">We'll send a copy of your results to email below</p>
-                                <input bind:value={email} type="email" id="email" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="you@site.com">
+                                <input bind:value={email} type="email" id="email" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="holdezy@gmail.com">
                             </div>
                         </div>
 
@@ -100,9 +103,13 @@
                     <div class="relative py-10 gap-10 flex flex-col justify-center items-center">
                         <video preload="auto" class="h-80 rounded-lg" autoplay>
                             <source src="https://cdn.dribbble.com/users/2247428/screenshots/16321135/media/222d28f7bbdccd37951fcb0a4a042100.mp4" type="video/mp4">
+                            <track src="/path/to/description.txt" kind="captions" srclang="en" label="English Description">
                             Your browser does not support the video tag.
                         </video>
-                        <h1 class="text-2xl text-center font-medium px-20">Your results have been sent to your email 🎉</h1>
+                        <div class="flex flex-col gap-8">
+                            <h1 class="text-2xl text-center font-medium px-20">Your results have been sent to your email 🎉</h1>
+                            <button on:click={toggleModal} class="w-4/6 mx-auto text-lg text-white px-5 py-3 rounded-xl font-medium bg-black">Back</button>
+                        </div>
                     </div>
                 {/if}
             </div>
@@ -110,13 +117,13 @@
     {/if}
 
     {#if !showingModal}
-        <div class="mt-10 md:mt-20 lg:mt-14 mb-9 w-5/6">
+        <div class="mb-9 w-5/6">  <!--mt-10 md:mt-20 lg:mt-14-->
             <div class="mb-3 flex items-center gap-6">
                 <h1 class="text-4xl md:text-5xl font-bold">
                     Results
                 </h1>
 
-                <Percentage percentage={calculatePassedPercentage()} height=16 width=16 />
+                <Percentage percentage={calculatePassedPercentage()} size="3.5rem" fontSize="text-xl"/>
             </div>
 
             <p class="text-lg md:text-xl text-gray-500">

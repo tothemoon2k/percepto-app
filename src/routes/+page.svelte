@@ -26,6 +26,10 @@
     }
 
     const handleNext = () =>{
+        if(!idea){
+            alert("Please enter your idea");
+            return;
+        }
         screen++;
     }
 

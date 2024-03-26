@@ -43,13 +43,13 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div on:click={toggleExtended} class="{extended ? "relative shadow-sm w-full px-6 pb-10 rounded-xl bg-white" : "relative shadow-sm w-full py-3 px-6 rounded-xl bg-white flex items-center gap-5"} cursor-pointer transition-all">
     {#if !extended}
-        <Percentage percentage={passPercentage} /> <!--h-10 md:h-12-->
+        <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
         <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
         <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
         <img class="absolute right-12 h-10 -mt-1" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
     {:else}
         <div class="flex items-center gap-5 py-4">
-            <Percentage percentage={passPercentage} /> <!--h-10 md:h-12-->
+            <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
             <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
             <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
         </div>
@@ -59,7 +59,7 @@
         {#each items as item}
             <div class="mt-4 ml-2.5">
                 <div class="flex gap-4 items-center py-2">
-                    <img class="h-9" src="https://cdn.discordapp.com/attachments/1194844996034117662/1216870446314553395/Screenshot_2024-03-11_at_6.08.34_PM.png?ex=6601f5ea&is=65ef80ea&hm=c5b9c9e09519e5ca56cff3dbd6727efff9a0ec59ce6472457b76bad7e3a74469&" alt="">
+                    <Percentage percentage={passPercentage} size="2.5rem" fontSize="text-sm" />
                     <h3 class="text-lg">{item.item}</h3>
                     <h3 class="text-lg {item.passing ? "text-green-500": "text-red-500"}">{item.passing ? "Pass" : "Fail"}</h3>
                 </div>

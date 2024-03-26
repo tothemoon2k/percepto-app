@@ -231,11 +231,13 @@
             {/each}
         </div>
 
-        <button on:click={handleCreate} class="mt-6 md:ml-6 md:w-full text-start font-medium underline text-lg cursor-pointer">Create a custom checklist</button>
+        <div class="flex items-center justify-center lg:justify-between flex-col lg:flex-row w-full max-w-9xl px-6 gap-10 mt-4 md:mt-10 lg:mt-8 mb-14">
+            <button on:click={handleCreate} class="self-start font-medium underline text-lg cursor-pointer text-center w-full lg:w-fit">Create a custom checklist</button>
 
-        <div class="mt-20 md:mt-10 lg:mt-0 mb-14 md:self-end flex items-center gap-8">
-            <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
-            <NextBtn on:click={evaluate} text="Evaluate"/>
+            <div class="flex items-center gap-6 lg:gap-8">
+                <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
+                <NextBtn on:click={evaluate} text="Evaluate"/>
+            </div>
         </div>
     {/if}
 </div>
