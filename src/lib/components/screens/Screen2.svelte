@@ -217,11 +217,11 @@
     {#if !showingModal && !showingEditModal}
         <div class="md:mt-14 lg:mt-32">
             <h1 class="mt-10 md:mt-0 text-4xl md:text-5xl font-bold">
-                Choose your checklists/ criteria 📋
+                Choose a checklist or two, or three. 📋
             </h1>
         
-            <p class="mt-2 md:mt-1 text-lg md:text-xl text-gray-500">
-                Objectively evaluate your business idea based on winning checklists
+            <p class="mt-2 md:mt-1 text-lg md:text-lg w-3/4 text-gray-500">
+                Select from preset checklists, or customize any checklist by hovering and selecting the edit icon. You can also create your own checklist.
             </p>
         </div>
 

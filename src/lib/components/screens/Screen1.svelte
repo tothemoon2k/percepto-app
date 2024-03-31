@@ -24,10 +24,10 @@
 
     <div class="mt-12 mb-9 md:mb-0 md:mt-0 lg:mt-9 md:pr-16 flex flex-col justify-center w-full px-8 md:px-0 md:w-1/2 h-full">
         <h1 class="text-4xl md:text-5xl font-bold">
-            Objectively Evaluate Your Business Idea in Under 30 Seconds ⏱️
+            Does your start-up idea meet winning criteria? 👀
         </h1>
-        <p class="mt-1 text-lg md:text-xl text-gray-500">
-            Objectively evaluate your business idea based on winning checklists
+        <p class="mt-1 text-lg md:text-base text-gray-500">
+            Simply enter your idea, select a criteria checklist. Our tool will evaluate your idea in under 30 seconds comparing your idea vs winning checklists by Paul Graham and others. Giving you the confidence to pursue or discard your idea based on real facts, evidence and reason.
         </p>
 
         <textarea bind:value={idea} on:input={handleIdeaInput} class="mt-6 border-2 rounded-2xl pt-3.5 px-5 pb-36 text-wrap" placeholder="A website that allows astronauts to buy affordable rocket boots from Russia via two-day shipping" name="idea" id="idea"></textarea>
