@@ -2,6 +2,7 @@
     // @ts-nocheck
     import { createEventDispatcher } from 'svelte';
     import NextBtn from "$lib/components/general/NextBtn.svelte";
+    import pg from "$lib/assets/pg.webp";
 
     const dispatch = createEventDispatcher();
     export let idea;
@@ -19,7 +20,7 @@
 
 <div class="flex w-full fill-height absolute">
     <div class="hidden md:flex px-6 justify-center items-center w-full md:w-1/2 h-full">
-        <img class="rounded-2xl aspect-square object-cover w-5/6 xl:w-3/5" src="https://media.licdn.com/dms/image/C4E12AQEbVXou0BNGCA/article-cover_image-shrink_720_1280/0/1575880078189?e=2147483647&v=beta&t=nMyqG4r9JfHemvVg97Im-9sYt56nflHAoiDP2q_O6fo" alt="Paul Graham">
+        <img class="rounded-2xl aspect-square object-cover w-5/6 xl:w-3/5" src={pg} alt="Paul Graham">
     </div>
 
     <div class="mt-12 mb-9 md:mb-0 md:mt-0 lg:mt-9 md:pr-16 flex flex-col justify-center w-full px-8 md:px-0 md:w-1/2 h-full">
