@@ -9,11 +9,11 @@
     import ChecklistResults from "$lib/components/general/ChecklistResults.svelte";
     import Percentage from "$lib/components/general/Percentage.svelte";
 
-    let showingModal = true;
+    let showingModal = false;
     let emailSending = false;
     let emailName = "";
     let email = "";
-    let emailSent = true;
+    let emailSent = false;
 
     const toggleModal = () => {
         showingModal = !showingModal;
@@ -131,7 +131,7 @@
             </p>
         </div>
 
-        <div class="flex flex-col gap-6 w-5/6">
+        <div class="flex flex-col gap-6 w-5/6 h-2/5">
 
             {#each results.checklists as checklist, i}
                 <ChecklistResults 

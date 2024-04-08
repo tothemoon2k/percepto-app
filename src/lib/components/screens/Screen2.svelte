@@ -12,42 +12,45 @@
 
     const presets = [
         {
-            name: "Alex Hormozi Checklist",
-            img: AlexHormozi,
+            name: "Peter Thiel Checklist",
+            img: "https://imageio.forbes.com/specials-images/imageserve/5a836fff31358e4955ad6549/0x0.jpg?format=jpg&crop=556,556,x234,y7,safe&height=416&width=416&fit=bounds",
             checklist: [
-                "Target customers can afford your offering.",
-                "Easy to reach and target your ideal audience",
-                "Business is in a growing market",
+                "Does it provide a significant advance/breakthrough or only incremental improvement?",
+                "Is this the right time to sell this technology?",
+                "Can you target a big share of a small market?",
+                "Do you have a way to not just create but deliver your product?",
+                "Can you dominate the market in the next 10 to 20 years?",
+                "Does it identify a unique opportunity overlooked by everyone else?"
             ]
         },
         {
-            name: "Paul Graham Start-up Checklist",
-            img: PaulGraham,
+            name: "Paul Graham Checklist",
+            img: "https://speechify.com/audiobooks/wp-content/uploads/sites/29/2023/02/paul-graham.webp",
             checklist: [
                 "Is the idea in a market that is currently big or small but rapidly growing?",
                 "Does the idea solve a painful problem?",
-                "Is the idea is difficult to replicate?",
+                "Is there a large competitor that does something similar, but is not a direct competitor?",
+                "Is it a good idea space with high hit-rate?"
             ]
         },
         {
-            name: "Biaheza Winning Product Checklist",
-            img: Biaheza,
+            name: "Reid Hoffman Blitzscaling Checklist",
+            img: "https://pbs.twimg.com/profile_images/971127018023665664/cDRrTbCI_400x400.jpg",
             checklist: [
-                "Does the product solve a problem?",
-                "High profit margin",
-                "Mass market appeal",
-                "Product not sold in most retail stores",
-                "Product is undiscovered"
+                'Does it pursue a truly massive market opportunity (an "enormous TAM")?',
+                "Does it operate in a potentially winner-take-most market?",
+                "Does it possess a truly defensible business model?",
+                "Does it harness business model amplifiers like network effects?",
             ]
         },
         {
-            name: "Rick Ross Business Checklist",
-            img: RickRoss,
+            name: "Micro SaaS Checklist",
+            img: "https://ideausher.com/wp-content/uploads/2022/07/covr-image-42_result-1.webp",
             checklist: [
-                "Is there hustle involved?",
-                "Can it grow long into the future?",
-                "Is it cash flow positive?",
-                "Is there potential for a big exit?"
+                "Is there a clear and identifiable problem that it solves?",
+                "Is it easy to find and speak to your ideal customers?",
+                "Is the problem significant enough for potential customers to pay for a solution?",
+                "Are there existing solutions, and if so, is the idea different or provide significantly more value?"
             ]
         }
     ]

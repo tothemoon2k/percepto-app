@@ -59,7 +59,7 @@
         {#each items as item}
             <div class="mt-4 ml-2.5">
                 <div class="flex gap-4 items-center py-2">
-                    <Percentage percentage={passPercentage} size="2.5rem" fontSize="text-sm" />
+                    <Percentage percentage={item.passing_percentage} size="2.5rem" fontSize="text-sm" />
                     <h3 class="text-lg">{item.item}</h3>
                     <h3 class="text-lg {item.passing ? "text-green-500": "text-red-500"}">{item.passing ? "Pass" : "Fail"}</h3>
                 </div>
