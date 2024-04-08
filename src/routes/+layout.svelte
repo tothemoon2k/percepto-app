@@ -1,7 +1,8 @@
 <script>
     import "../app.css";
     import "../fonts.css";
-    
+    import { onMount } from "svelte";
+
     /*
     import { dev } from '$app/environment';
     import { inject } from '@vercel/analytics';
@@ -10,7 +11,9 @@
 
     import posthog from 'posthog-js'
 
-    posthog.init('phc_zqngHf3l7HSeQHegUJ4MCDA3Czghpdt222nSuXULBFz', { api_host: 'https://app.posthog.com' })
+    onMount(()=>{
+        posthog.init('phc_zqngHf3l7HSeQHegUJ4MCDA3Czghpdt222nSuXULBFz', { api_host: 'https://app.posthog.com' })
+    })
 
     //Post hog events - posthog.capture('my event', { property: 'value' })
 </script>
