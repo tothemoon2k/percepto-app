@@ -42,7 +42,7 @@
 
         screen = "loading";
 
-        posthog.capture('evaluate idea', { timestamp: new Date.now() })
+        posthog.capture('evaluate idea', { timestamp: Date.now() })
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
