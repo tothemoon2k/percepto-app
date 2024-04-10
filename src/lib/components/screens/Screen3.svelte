@@ -40,13 +40,12 @@
 
     function calculatePassedPercentage() {
         let totalItems = results.checklists.length;
-        let passedItems = 0;
         let totalSum = 0;
 
         for (const checklist of results.checklists) {
             let sum = 0;
             for (const item of checklist.items) {
-                sum+=item.passing_percentage;
+                sum += item.passing_percentage;
             }
             totalSum += sum/checklist.items.length;
         }

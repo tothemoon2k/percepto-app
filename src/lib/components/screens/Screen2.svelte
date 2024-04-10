@@ -21,7 +21,8 @@
                 "Do you have a way to not just create but deliver your product?",
                 "Can you dominate the market in the next 10 to 20 years?",
                 "Does it identify a unique opportunity overlooked by everyone else?"
-            ]
+            ],
+            selected: false
         },
         {
             name: "Paul Graham Checklist",
@@ -31,7 +32,8 @@
                 "Does the idea solve a painful problem?",
                 "Is there a large competitor that does something similar, but is not a direct competitor?",
                 "Is it a good idea space with high hit-rate?"
-            ]
+            ],
+            selected: false
         },
         {
             name: "Reid Hoffman Blitzscaling Checklist",
@@ -41,7 +43,8 @@
                 "Does it operate in a potentially winner-take-most market?",
                 "Does it possess a truly defensible business model?",
                 "Does it harness business model amplifiers like network effects?",
-            ]
+            ],
+            selected: false
         },
         {
             name: "Micro SaaS Checklist",
@@ -51,7 +54,8 @@
                 "Is it easy to find and speak to your ideal customers?",
                 "Is the problem significant enough for potential customers to pay for a solution?",
                 "Are there existing solutions, and if so, is the idea different or provide significantly more value?"
-            ]
+            ],
+            selected: false
         }
     ]
 
@@ -122,11 +126,23 @@
     }
 
     const handleChecklistClick = (e) =>{
-        if(e.detail.selected){
-            selectedChecklists.push(e.detail.index);
-        }else{
+        if(checklists[e.detail.index].selected) {
+            checklists[e.detail.index].selected = !checklists[e.detail.index].selected;
             selectedChecklists = selectedChecklists.filter((item) => item !== e.detail.index);
+            
+        } else{
+            if(selectedChecklists.length < 3) {
+                checklists[e.detail.index].selected = !checklists[e.detail.index].selected;
+
+                if(checklists[e.detail.index].selected){
+                    selectedChecklists.push(e.detail.index);
+                }
+            } else {
+                alert("Please select up to 3 checklists")
+            }
         }
+
+        console.log(selectedChecklists)
     }
 
     const handleBack = () => {
@@ -229,8 +245,8 @@
         </div>
 
         <div class="mt-12 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-auto py-2 px-2">
-            {#each checklists as {name, img, checklist}, index}
-                <ChecklistCard on:click={handleChecklistClick} on:edit={handleChecklistEdit} {name} {img} {checklist} {index}/>
+            {#each checklists as {name, img, checklist, selected}, index}
+                <ChecklistCard on:click={handleChecklistClick} on:edit={handleChecklistEdit} {selected} {name} {img} {checklist} {index}/>
             {/each}
         </div>
 

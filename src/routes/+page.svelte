@@ -47,7 +47,7 @@
         })
         .then(res => {
             results = res.data;
-            console.log(results, selectedChecklists)
+            console.log(results.checklists)
             screen = 3;
         })
         .catch(error => {

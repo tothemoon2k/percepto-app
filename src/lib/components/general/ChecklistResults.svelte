@@ -16,24 +16,14 @@
     }
 
     function checklistPassed() {
-        let totalWeight = 0;
-        let passedWeight = 0;
+        let totalItems = items.length;
+        let totalSum = 0;
 
-        for (const item of items) {
-            const { passing, passing_percentage } = item;
-            const weight = passing_percentage / 100;
-            totalWeight += weight;
-
-            if (passing) {
-            passedWeight += weight;
-            }
+        for(let item of items){
+            totalSum += item.passing_percentage
         }
 
-        const overallPassingPercentage = (passedWeight / totalWeight) * 100;
-        const overallPassed = overallPassingPercentage >= 50;
-
-        overallPass = overallPassed;
-        passPercentage = Math.floor(overallPassingPercentage);
+        passPercentage = totalSum/totalItems;
     }
 
     checklistPassed();
@@ -45,13 +35,13 @@
     {#if !extended}
         <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
         <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
-        <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
+        <h3 class="md:text-xl {passPercentage < 50 ? 'text-red-500' : passPercentage < 80 ? 'text-yellow-500' : passPercentage >= 80 ? 'text-green-500' : ''} font-medium">{passPercentage > 49 ? "Pass" : "Fail"}</h3>
         <img class="absolute right-12 h-10 -mt-1" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
     {:else}
         <div class="flex items-center gap-5 py-4">
             <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
             <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
-            <h3 class="md:text-xl {overallPass ? "text-green-500": "text-red-500"} font-medium">{overallPass ? "Pass" : "Fail"}</h3>
+            <h3 class="md:text-xl {passPercentage < 50 ? 'text-red-500' : passPercentage < 80 ? 'text-yellow-500' : passPercentage >= 80 ? 'text-green-500' : ''} font-medium">{passPercentage ? "Pass" : "Fail"}</h3>
         </div>
         
         <hr class="h-px bg-gray-200 border-0 mb-5">

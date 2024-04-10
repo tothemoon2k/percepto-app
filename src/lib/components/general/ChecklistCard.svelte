@@ -5,17 +5,16 @@
     export let name: string;
     export let checklist: string[];
     export let index: number;
+    export let selected: boolean;
 
     const dispatch = createEventDispatcher();
-    let selected = false;
 
     const handleEdit = () => {
         dispatch('edit', index);
     }
 
     const handleClick = () => {
-        selected = !selected;
-        dispatch('click', {index, selected: selected});
+        dispatch('click', {index});
     }
 </script>
 

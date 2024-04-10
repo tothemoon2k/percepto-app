@@ -8,9 +8,9 @@
 
     if (percentage < 50) {
         color = "red";
-    }else if (percentage < 70) {
+    }else if (percentage < 80) {
         color = "yellow";
-    }else if (percentage < 90) {
+    }else if (percentage > 90) {
         color = "green";
     }
 </script>
