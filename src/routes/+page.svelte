@@ -6,6 +6,7 @@
     import Screen2 from '$lib/components/screens/Screen2.svelte';
     import Loading from '$lib/components/screens/Loading.svelte';
     import Screen3 from '$lib/components/screens/Screen3.svelte';
+    import posthog from 'posthog-js';
 
     let screen = 1;
 
@@ -40,6 +41,8 @@
         }
 
         screen = "loading";
+
+        posthog.capture('evaluate idea', { timestamp: new Date.now() })
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
@@ -47,7 +50,7 @@
         })
         .then(res => {
             results = res.data;
-            console.log(results.checklists)
+            console.log(results.checklists);
             screen = 3;
         })
         .catch(error => {
