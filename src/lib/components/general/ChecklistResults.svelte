@@ -1,7 +1,7 @@
 <script>
     //@ts-nocheck
     import Percentage from "./Percentage.svelte";
-    export let name = "Testinski";
+    export let name = "";
     export let items = [];
     let passPercentage;
     

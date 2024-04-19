@@ -5,6 +5,7 @@
     export let fontSize;
 
     let color = "green";
+    percentage = Math.floor(percentage);
 
     if (percentage < 50) {
         color = "red";
