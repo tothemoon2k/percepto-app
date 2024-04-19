@@ -10,7 +10,7 @@
 
     let screen = 1;
 
-    let idea = "A website for comics to share their routines";
+    let idea = "";
     let selectedChecklists = [];
     let checklistNames = []
     let results = [];
