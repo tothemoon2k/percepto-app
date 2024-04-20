@@ -36,7 +36,7 @@
         <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
         <h3 class="leading-6 md:text-xl font-medium">{name} Checklist</h3>
         <h3 class="md:text-xl {passPercentage < 50 ? 'text-red-500' : passPercentage < 80 ? 'text-yellow-500' : passPercentage >= 80 ? 'text-green-500' : ''} font-medium">{passPercentage > 49 ? "Pass" : "Fail"}</h3>
-        <img class="absolute right-12 h-10 -mt-1" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
+        <img class="hidden md:block absolute right-12 h-10 -mt-1" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
     {:else}
         <div class="flex items-center gap-5 py-4">
             <Percentage percentage={passPercentage} size="3rem" fontSize="text-lg" />
@@ -59,6 +59,6 @@
                 </p>
             </div>
         {/each}
-        <img class="absolute top-6 right-12 h-10 rotate-180" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
+        <img class="hidden md:block absolute top-6 right-12 h-10 rotate-180" src="https://img.icons8.com/material-two-tone/100/expand-arrow--v1.png" alt="Dropdown Arrow">
     {/if}
 </div>

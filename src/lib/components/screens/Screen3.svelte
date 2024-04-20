@@ -116,7 +116,7 @@
     {/if}
 
     {#if !showingModal}
-        <div class="mb-9 w-5/6">  <!--mt-10 md:mt-20 lg:mt-14-->
+        <div class="mb-9 w-5/6 mt-10 lg:mt-14">  <!---->
             <div class="mb-3 flex items-center gap-6">
                 <h1 class="text-4xl md:text-5xl font-bold">
                     Results
