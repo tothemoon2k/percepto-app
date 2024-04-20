@@ -7,6 +7,8 @@
     import Loading from '$lib/components/screens/Loading.svelte';
     import Screen3 from '$lib/components/screens/Screen3.svelte';
     import posthog from 'posthog-js';
+    import { db } from '$lib/utils/firebase';
+    import { addDoc, doc, collection } from 'firebase/firestore';
 
     let screen = 1;
 
@@ -34,15 +36,20 @@
         screen++;
     }
 
-    const handleEvaluate = () =>{
+    const handleEvaluate = async () =>{
         if(!selectedChecklists.length){
             alert("Please select at least one checklist");
             return;
         }
+        
+        const docRef = await addDoc(collection(db, "evaluations"), {
+            idea: idea,
+            checklists: selectedChecklists.flat()
+        });
 
         screen = "loading";
 
-        posthog.capture('evaluate idea', { timestamp: Date.now() })
+        posthog.capture('evaluate idea')
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
@@ -50,7 +57,6 @@
         })
         .then(res => {
             results = res.data;
-            console.log(results.checklists);
             screen = 3;
         })
         .catch(error => {
