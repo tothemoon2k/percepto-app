@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@vercel/analytics": "^1.2.2",
 		"axios": "^1.6.7",
+		"firebase": "^10.11.0",
 		"posthog-js": "^1.128.1",
 		"vercel": "^33.7.0"
 	}
