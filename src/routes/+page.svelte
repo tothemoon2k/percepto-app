@@ -41,15 +41,15 @@
             alert("Please select at least one checklist");
             return;
         }
-        
+
+        screen = "loading";
+
+        posthog.capture('evaluate idea');
+
         const docRef = await addDoc(collection(db, "evaluations"), {
             idea: idea,
             checklists: selectedChecklists.flat()
         });
-
-        screen = "loading";
-
-        posthog.capture('evaluate idea')
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
