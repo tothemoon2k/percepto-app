@@ -255,7 +255,7 @@
 
             <div class="flex items-center gap-6 lg:gap-8">
                 <button on:click={handleBack} class="w-fit h-fit text-black text-xl font-medium hover:scale-95 transition-all cursor-pointer">Back</button>
-                <NextBtn on:click={evaluate} text="Evaluate"/>
+                <NextBtn on:click={evaluate} text="Pay $2"/>
             </div>
         </div>
     {/if}

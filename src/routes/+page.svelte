@@ -8,7 +8,7 @@
     import Screen3 from '$lib/components/screens/Screen3.svelte';
     import posthog from 'posthog-js';
     import { db } from '$lib/utils/firebase';
-    import { addDoc, doc, collection } from 'firebase/firestore';
+    import { addDoc, doc, collection, serverTimestamp } from 'firebase/firestore';
 
     let screen = 1;
 
@@ -53,7 +53,8 @@
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
-            checklists: selectedChecklists
+            checklists: selectedChecklists,
+            timestamp: serverTimestamp(),
         })
         .then(res => {
             results = res.data;
