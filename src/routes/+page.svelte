@@ -48,13 +48,13 @@
 
         const docRef = await addDoc(collection(db, "evaluations"), {
             idea: idea,
-            checklists: selectedChecklists.flat()
+            checklists: selectedChecklists.flat(),
+            timestamp: serverTimestamp(),
         });
         
         axios.post(import.meta.env.VITE_EVAL_POST_URL || "https://businessideaevaluator.onrender.com/evaluate", {
             businessIdea: idea,
             checklists: selectedChecklists,
-            timestamp: serverTimestamp(),
         })
         .then(res => {
             results = res.data;
