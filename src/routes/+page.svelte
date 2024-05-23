@@ -44,7 +44,9 @@
 
         screen = "loading";
 
-        posthog.capture('Evaluations');
+        posthog.capture('Evaluations', {
+            idea: idea
+        });
 
         const docRef = await addDoc(collection(db, "evaluations"), {
             idea: idea,
